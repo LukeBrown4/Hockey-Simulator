@@ -62,11 +62,22 @@ public class Player {
 	}
 	
 	void play() {
+		gamesPlayed++;	
+	}
+	void healing() {
 		if (injuryLength > 0) {
 			injuryLength--;
-		} else {
-			gamesPlayed++;
-		}		
+		} 
 	}
+	
+	double ovrRating() {
+		return roundItTwo((double)((this.defense * 1.25)  + (this.offense * 1.5) + (this.passing * 1.5) + (this.physical * .5))/3);
+	}
+	
+	public static double roundItTwo(double value) {
+	    double scale = Math.pow(10, 1);
+	    return Math.round(value * scale) / scale;
+	}
+	
 
 }

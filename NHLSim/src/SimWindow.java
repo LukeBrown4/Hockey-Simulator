@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.GraphicsDevice;
+
 import javax.swing.JTextPane;
 import java.awt.List;
 import java.awt.Panel;
@@ -66,7 +68,16 @@ public class SimWindow extends JFrame {
 	public static JLabel goalLight;
 	public static Choice homeChoice;
 	public static Choice awayChoice;
+	GraphicsDevice gDevice;
 
+	
+	/**
+	 * TO-DO
+	 * 
+	 * Reserve List
+	 * 
+	 */
+	
 
 	
 	/**
@@ -90,9 +101,11 @@ public class SimWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public SimWindow() {
+		
+		
 		setTitle("Hockey Sim");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1920, 900);
+		setBounds(100, 100, 1920, 980);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(40,46,50));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -121,7 +134,7 @@ public class SimWindow extends JFrame {
 		textPane.setForeground(Color.WHITE);
 		textPane.setBackground(col);
 		textPane.setFont(new Font("Bahnschrift", Font.BOLD, 14));
-		textPane.setBounds(20, 156, 757, 629);
+		textPane.setBounds(20, 156, 757, 733);
 		contentPane.add(textPane);
 		
 		standings = new List();
@@ -181,7 +194,7 @@ public class SimWindow extends JFrame {
 		});
 		playSeason.setFont(new Font("Arial", Font.BOLD, 15));
 		playSeason.setBackground(Color.WHITE);
-		playSeason.setBounds(20, 791, 179, 35);
+		playSeason.setBounds(10, 895, 179, 35);
 		contentPane.add(playSeason);
 		
 		JLabel homeLabel = new JLabel("Home");
@@ -228,7 +241,7 @@ public class SimWindow extends JFrame {
 		});
 		saveSeason.setFont(new Font("Arial", Font.BOLD, 15));
 		saveSeason.setBackground(Color.WHITE);
-		saveSeason.setBounds(211, 791, 179, 35);
+		saveSeason.setBounds(195, 895, 179, 35);
 		contentPane.add(saveSeason);
 		
 		Button loadSeason = new Button("Load Season");
@@ -244,7 +257,7 @@ public class SimWindow extends JFrame {
 		});
 		loadSeason.setFont(new Font("Arial", Font.BOLD, 15));
 		loadSeason.setBackground(Color.WHITE);
-		loadSeason.setBounds(407, 791, 179, 35);
+		loadSeason.setBounds(418, 895, 179, 35);
 		contentPane.add(loadSeason);
 		
 		Choice scoringLeaderBar = new Choice();
@@ -252,7 +265,7 @@ public class SimWindow extends JFrame {
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setFont(new Font("Bahnschrift", Font.BOLD, 14));
-		tabbedPane.setBounds(787, 347, 1107, 479);
+		tabbedPane.setBounds(787, 347, 1107, 583);
 		JPanel leagueScoringPanel = new JPanel();
 		tabbedPane.addTab("Skater Stats", null, leagueScoringPanel, null);
 		tabbedPane.setBackgroundAt(0, Color.LIGHT_GRAY);
@@ -271,21 +284,21 @@ public class SimWindow extends JFrame {
 		
 
 		pointsList = new List();
-		pointsList.setBounds(10, 45, 337, 393);
+		pointsList.setBounds(10, 45, 337, 497);
 		leagueScoringPanel.add(pointsList);
 		pointsList.setFont(new Font("Bahnschrift", Font.BOLD, 15));
 		pointsList.setForeground(Color.WHITE);
 		pointsList.setBackground(col);
 		
 		goalsList = new List();
-		goalsList.setBounds(377, 45, 337, 393);
+		goalsList.setBounds(377, 45, 337, 497);
 		leagueScoringPanel.add(goalsList);
 		goalsList.setFont(new Font("Bahnschrift", Font.BOLD, 15));
 		goalsList.setForeground(Color.WHITE);
 		goalsList.setBackground(col);
 		
 		assistList = new List();
-		assistList.setBounds(746, 45, 337, 393);
+		assistList.setBounds(746, 45, 337, 497);
 		leagueScoringPanel.add(assistList);
 		assistList.setFont(new Font("Bahnschrift", Font.BOLD, 15));
 		assistList.setForeground(Color.WHITE);
@@ -320,21 +333,21 @@ public class SimWindow extends JFrame {
 		goalsAgainstList.setForeground(Color.WHITE);
 		goalsAgainstList.setFont(new Font("Bahnschrift", Font.BOLD, 15));
 		goalsAgainstList.setBackground(new Color(51, 54, 57));
-		goalsAgainstList.setBounds(10, 43, 337, 395);
+		goalsAgainstList.setBounds(10, 43, 337, 499);
 		leagueGoaliePanel.add(goalsAgainstList);
 		
 		shotsFacedList = new List();
 		shotsFacedList.setForeground(Color.WHITE);
 		shotsFacedList.setFont(new Font("Bahnschrift", Font.BOLD, 15));
 		shotsFacedList.setBackground(new Color(51, 54, 57));
-		shotsFacedList.setBounds(383, 43, 337, 395);
+		shotsFacedList.setBounds(383, 43, 337, 499);
 		leagueGoaliePanel.add(shotsFacedList);
 		
 	    gamesPlayedList = new List();
 	    gamesPlayedList.setForeground(Color.WHITE);
 	    gamesPlayedList.setFont(new Font("Bahnschrift", Font.BOLD, 15));
 	    gamesPlayedList.setBackground(new Color(51, 54, 57));
-	    gamesPlayedList.setBounds(755, 43, 337, 395);
+	    gamesPlayedList.setBounds(755, 43, 337, 499);
 		leagueGoaliePanel.add(gamesPlayedList);
 		
 		Choice goalieBar = new Choice();
@@ -403,14 +416,14 @@ public class SimWindow extends JFrame {
 		goalieLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		goalieLabel.setForeground(Color.WHITE);
 		goalieLabel.setFont(new Font("Bahnschrift", Font.BOLD, 20));
-		goalieLabel.setBounds(346, 367, 195, 26);
+		goalieLabel.setBounds(346, 471, 195, 26);
 		teamExplorePanel.add(goalieLabel);
 		
 		List skaterNameList = new List();
 		skaterNameList.setForeground(Color.WHITE);
 		skaterNameList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		skaterNameList.setBackground(new Color(51, 54, 57));
-		skaterNameList.setBounds(346, 67, 221, 292);
+		skaterNameList.setBounds(346, 67, 221, 398);
 		teamExplorePanel.add(skaterNameList);
 		
 		
@@ -418,21 +431,21 @@ public class SimWindow extends JFrame {
 		goalieList.setForeground(Color.WHITE);
 		goalieList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		goalieList.setBackground(new Color(51, 54, 57));
-		goalieList.setBounds(346, 399, 221, 39);
+		goalieList.setBounds(346, 503, 221, 39);
 		teamExplorePanel.add(goalieList);
 		
 		List skaterOffList = new List();
 		skaterOffList.setForeground(Color.WHITE);
 		skaterOffList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		skaterOffList.setBackground(new Color(51, 54, 57));
-		skaterOffList.setBounds(626, 67, 30, 292);
+		skaterOffList.setBounds(626, 67, 30, 398);
 		teamExplorePanel.add(skaterOffList);
 		
 		List goalieOvrList = new List();
 		goalieOvrList.setForeground(Color.WHITE);
 		goalieOvrList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		goalieOvrList.setBackground(new Color(51, 54, 57));
-		goalieOvrList.setBounds(573, 399, 43, 39);
+		goalieOvrList.setBounds(573, 503, 43, 39);
 		teamExplorePanel.add(goalieOvrList);
 		
 		
@@ -457,21 +470,21 @@ public class SimWindow extends JFrame {
 		teamGlsList.setForeground(Color.WHITE);
 		teamGlsList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		teamGlsList.setBackground(new Color(51, 54, 57));
-		teamGlsList.setBounds(838, 67, 44, 292);
+		teamGlsList.setBounds(838, 67, 44, 398);
 		teamExplorePanel.add(teamGlsList);
 		
 		List teamAssList = new List();
 		teamAssList.setForeground(Color.WHITE);
 		teamAssList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		teamAssList.setBackground(new Color(51, 54, 57));
-		teamAssList.setBounds(888, 67, 44, 292);
+		teamAssList.setBounds(888, 67, 44, 398);
 		teamExplorePanel.add(teamAssList);
 		
 		List teamPtsList = new List();
 		teamPtsList.setForeground(Color.WHITE);
 		teamPtsList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		teamPtsList.setBackground(new Color(51, 54, 57));
-		teamPtsList.setBounds(938, 67, 44, 292);
+		teamPtsList.setBounds(938, 67, 44, 398);
 		teamExplorePanel.add(teamPtsList);
 		
 		JLabel glsLabel = new JLabel("G");
@@ -499,56 +512,56 @@ public class SimWindow extends JFrame {
 		teamGaaList.setForeground(Color.WHITE);
 		teamGaaList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		teamGaaList.setBackground(new Color(51, 54, 57));
-		teamGaaList.setBounds(626, 399, 44, 39);
+		teamGaaList.setBounds(626, 503, 44, 39);
 		teamExplorePanel.add(teamGaaList);
 		
 		List teamSvpList = new List();
 		teamSvpList.setForeground(Color.WHITE);
 		teamSvpList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		teamSvpList.setBackground(new Color(51, 54, 57));
-		teamSvpList.setBounds(676, 399, 44, 39);
+		teamSvpList.setBounds(676, 503, 44, 39);
 		teamExplorePanel.add(teamSvpList);
 		
 		List teamSoList = new List();
 		teamSoList.setForeground(Color.WHITE);
 		teamSoList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		teamSoList.setBackground(new Color(51, 54, 57));
-		teamSoList.setBounds(726, 399, 44, 39);
+		teamSoList.setBounds(726, 503, 44, 39);
 		teamExplorePanel.add(teamSoList);
 		
 		JLabel lblOvr_1 = new JLabel("OVR");
 		lblOvr_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOvr_1.setForeground(Color.WHITE);
 		lblOvr_1.setFont(new Font("Bahnschrift", Font.BOLD, 14));
-		lblOvr_1.setBounds(573, 369, 43, 26);
+		lblOvr_1.setBounds(573, 473, 43, 26);
 		teamExplorePanel.add(lblOvr_1);
 		
 		JLabel gaaLabel = new JLabel("GAA");
 		gaaLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		gaaLabel.setForeground(Color.WHITE);
 		gaaLabel.setFont(new Font("Bahnschrift", Font.BOLD, 14));
-		gaaLabel.setBounds(626, 369, 47, 26);
+		gaaLabel.setBounds(626, 473, 47, 26);
 		teamExplorePanel.add(gaaLabel);
 		
 		JLabel svpLabel = new JLabel("SV%");
 		svpLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		svpLabel.setForeground(Color.WHITE);
 		svpLabel.setFont(new Font("Bahnschrift", Font.BOLD, 14));
-		svpLabel.setBounds(676, 369, 44, 26);
+		svpLabel.setBounds(676, 473, 44, 26);
 		teamExplorePanel.add(svpLabel);
 		
 		JLabel soLabel = new JLabel("SO");
 		soLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		soLabel.setForeground(Color.WHITE);
 		soLabel.setFont(new Font("Bahnschrift", Font.BOLD, 14));
-		soLabel.setBounds(726, 369, 40, 26);
+		soLabel.setBounds(730, 473, 40, 26);
 		teamExplorePanel.add(soLabel);
 		
 		List performanceList = new List();
 		performanceList.setForeground(Color.WHITE);
 		performanceList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		performanceList.setBackground(new Color(51, 54, 57));
-		performanceList.setBounds(988, 67, 88, 292);
+		performanceList.setBounds(988, 67, 88, 398);
 		teamExplorePanel.add(performanceList);
 		
 		JLabel perfLabel = new JLabel("Score");
@@ -562,21 +575,21 @@ public class SimWindow extends JFrame {
 		goaliePerformanceList.setForeground(Color.WHITE);
 		goaliePerformanceList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		goaliePerformanceList.setBackground(new Color(51, 54, 57));
-		goaliePerformanceList.setBounds(776, 399, 88, 39);
+		goaliePerformanceList.setBounds(776, 503, 88, 39);
 		teamExplorePanel.add(goaliePerformanceList);
 		
 		JLabel perfLabel_1 = new JLabel("Score");
 		perfLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		perfLabel_1.setForeground(Color.WHITE);
 		perfLabel_1.setFont(new Font("Bahnschrift", Font.BOLD, 14));
-		perfLabel_1.setBounds(776, 367, 87, 26);
+		perfLabel_1.setBounds(776, 473, 87, 26);
 		teamExplorePanel.add(perfLabel_1);
 		
 		List skaterDefList = new List();
 		skaterDefList.setForeground(Color.WHITE);
 		skaterDefList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		skaterDefList.setBackground(new Color(51, 54, 57));
-		skaterDefList.setBounds(702, 67, 30, 292);
+		skaterDefList.setBounds(702, 67, 30, 398);
 		teamExplorePanel.add(skaterDefList);
 		
 		JLabel lblDef = new JLabel("DEF");
@@ -590,7 +603,7 @@ public class SimWindow extends JFrame {
 		skaterOvrList.setForeground(Color.WHITE);
 		skaterOvrList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		skaterOvrList.setBackground(new Color(51, 54, 57));
-		skaterOvrList.setBounds(573, 67, 40, 292);
+		skaterOvrList.setBounds(573, 67, 40, 398);
 		teamExplorePanel.add(skaterOvrList);
 		
 		JLabel lblOvr = new JLabel("OVR");
@@ -604,7 +617,7 @@ public class SimWindow extends JFrame {
 		skaterPassList.setForeground(Color.WHITE);
 		skaterPassList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		skaterPassList.setBackground(new Color(51, 54, 57));
-		skaterPassList.setBounds(662, 67, 30, 292);
+		skaterPassList.setBounds(662, 67, 30, 398);
 		teamExplorePanel.add(skaterPassList);
 		JLabel lblPly = new JLabel("PSS");
 		lblPly.setHorizontalAlignment(SwingConstants.LEFT);
@@ -617,7 +630,7 @@ public class SimWindow extends JFrame {
 		skaterPhyList.setForeground(Color.WHITE);
 		skaterPhyList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		skaterPhyList.setBackground(new Color(51, 54, 57));
-		skaterPhyList.setBounds(738, 67, 30, 292);
+		skaterPhyList.setBounds(738, 67, 30, 398);
 		teamExplorePanel.add(skaterPhyList);
 		
 		JLabel lblPhy = new JLabel("PHY");
@@ -631,7 +644,7 @@ public class SimWindow extends JFrame {
 		skaterGpList.setForeground(Color.WHITE);
 		skaterGpList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		skaterGpList.setBackground(new Color(51, 54, 57));
-		skaterGpList.setBounds(787, 67, 30, 292);
+		skaterGpList.setBounds(787, 67, 30, 398);
 		teamExplorePanel.add(skaterGpList);
 		
 		JLabel lblGp = new JLabel("GP");
@@ -661,7 +674,7 @@ public class SimWindow extends JFrame {
 		injuryList.setForeground(Color.WHITE);
 		injuryList.setFont(new Font("Bahnschrift", Font.BOLD, 15));
 		injuryList.setBackground(new Color(51, 54, 57));
-		injuryList.setBounds(10, 45, 1073, 393);
+		injuryList.setBounds(10, 45, 1073, 497);
 		leagueInjuryPanel.add(injuryList);
 		
 		Button loadInjuries = new Button("Go");
@@ -693,39 +706,45 @@ public class SimWindow extends JFrame {
 			rosterBar.add(teams.get(i).getName());
 		}
 		
+		List depthChartList = new List();
+		depthChartList.setForeground(Color.WHITE);
+		depthChartList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
+		depthChartList.setBackground(new Color(51, 54, 57));
+		depthChartList.setBounds(10, 91, 250, 451);
+		rosterPanel.add(depthChartList);
+		
 		List starterList = new List();
 		starterList.setForeground(Color.WHITE);
-		starterList.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+		starterList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
 		starterList.setBackground(new Color(51, 54, 57));
-		starterList.setBounds(260, 91, 215, 330);
+		starterList.setBounds(360, 91, 250, 347);
 		rosterPanel.add(starterList);
 		
-		List reserveList = new List();
-		reserveList.setForeground(Color.WHITE);
-		reserveList.setFont(new Font("Bahnschrift", Font.BOLD, 15));
-		reserveList.setBackground(new Color(51, 54, 57));
-		reserveList.setBounds(566, 91, 215, 173);
-		rosterPanel.add(reserveList);
-		
-		List starterList_1_1 = new List();
-		starterList_1_1.setForeground(Color.WHITE);
-		starterList_1_1.setFont(new Font("Bahnschrift", Font.BOLD, 15));
-		starterList_1_1.setBackground(new Color(51, 54, 57));
-		starterList_1_1.setBounds(868, 91, 215, 173);
-		rosterPanel.add(starterList_1_1);
+		List injuredList = new List();
+		injuredList.setForeground(Color.WHITE);
+		injuredList.setFont(new Font("Bahnschrift", Font.BOLD, 14));
+		injuredList.setBackground(new Color(51, 54, 57));
+		injuredList.setBounds(632, 91, 451, 173);
+		rosterPanel.add(injuredList);
 		
 		Button loadRosters = new Button("Go");
 		loadRosters.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				teams.get(rosterBar.getSelectedIndex()).health();
 				teams.get(rosterBar.getSelectedIndex()).getStarters();
+				depthChartList.clear();
 				starterList.clear();
-				reserveList.clear();
+				injuredList.clear();
+				int start = 0;
 				for(int i = 0; i < teams.get(rosterBar.getSelectedIndex()).players.size(); i++) {
-					if (i < 18) {
-						starterList.add(teams.get(rosterBar.getSelectedIndex()).players.get(i).getName());
+					depthChartList.add(teams.get(rosterBar.getSelectedIndex()).players.get(i).ovrRating() + " " +teams.get(rosterBar.getSelectedIndex()).players.get(i).getName());
+					if(teams.get(rosterBar.getSelectedIndex()).players.get(i).injuryLength == 0) {
+						start++;
+						if (start < 18 ) {
+							starterList.add(teams.get(rosterBar.getSelectedIndex()).players.get(i).getName());
+						} 
 					} else {
-						reserveList.add(teams.get(rosterBar.getSelectedIndex()).players.get(i).getName());
+						injuredList.add(teams.get(rosterBar.getSelectedIndex()).players.get(i).getName() + " - " + teams.get(rosterBar.getSelectedIndex()).players.get(i).injuryLength + " Games");
 					}
 					
 				}
@@ -738,76 +757,98 @@ public class SimWindow extends JFrame {
 		loadRosters.setBounds(803, 6, 280, 26);
 		rosterPanel.add(loadRosters);
 		
-		JButton btnRosterToReserve = new JButton(">");
-		btnRosterToReserve.addActionListener(new ActionListener() {
+		JButton btnMoveDownRoster = new JButton("/|\\");
+		btnMoveDownRoster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Player p = teams.get(rosterBar.getSelectedIndex()).starters.get(starterList.getSelectedIndex());
-				teams.get(rosterBar.getSelectedIndex()).reserves.add(p);
-				reserveList.add(p.getName());
-				teams.get(rosterBar.getSelectedIndex()).starters.remove(starterList.getSelectedIndex());
-				starterList.remove(starterList.getSelectedIndex());
-			}
-		});
-		btnRosterToReserve.setFont(new Font("Bahnschrift", Font.BOLD, 30));
-		btnRosterToReserve.setBounds(492, 109, 55, 47);
-		rosterPanel.add(btnRosterToReserve);
-		
-		JButton btnReserveToRoster = new JButton("<");
-		btnReserveToRoster.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (teams.get(rosterBar.getSelectedIndex()).starters.size() >= 18) {
-					JOptionPane.showMessageDialog(null, "Starting Rosters Must be 18 Skaters or Less.");
-				} else {
-					Player p = teams.get(rosterBar.getSelectedIndex()).reserves.get(reserveList.getSelectedIndex());
-					teams.get(rosterBar.getSelectedIndex()).starters.add(p);
-					starterList.add(p.getName());
-					teams.get(rosterBar.getSelectedIndex()).reserves.remove(reserveList.getSelectedIndex());
-					reserveList.remove(reserveList.getSelectedIndex());
+				int select = depthChartList.getSelectedIndex();
+				if (select > 0) {
+					Player p = teams.get(rosterBar.getSelectedIndex()).starters.get(select);
+					Player p2 = teams.get(rosterBar.getSelectedIndex()).starters.get(select-1);
+					
+					depthChartList.add(p.ovrRating() + " " + p.getName(), select);
+					teams.get(rosterBar.getSelectedIndex()).starters.add(select, p);
+					
+					depthChartList.add(p2.ovrRating() + " " + p2.getName(), select+1);
+					teams.get(rosterBar.getSelectedIndex()).starters.add(select+1, p2);
+					
+					depthChartList.delItem(select-1);
+					teams.get(rosterBar.getSelectedIndex()).starters.remove(select-1);
+					
+					depthChartList.delItem(select+1);
+					teams.get(rosterBar.getSelectedIndex()).starters.remove(select+1);
+					
 				}
 			}
 		});
-		btnReserveToRoster.setFont(new Font("Bahnschrift", Font.BOLD, 30));
-		btnReserveToRoster.setBounds(492, 193, 55, 47);
-		rosterPanel.add(btnReserveToRoster);
+		btnMoveDownRoster.setFont(new Font("Bahnschrift", Font.BOLD, 20));
+		btnMoveDownRoster.setBounds(275, 156, 67, 47);
+		rosterPanel.add(btnMoveDownRoster);
 		
-		JLabel StartersLabel = new JLabel("Starters");
+		JButton btnMoveUpRoster = new JButton("\\|/");
+		btnMoveUpRoster.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int select = depthChartList.getSelectedIndex();
+				if (select < teams.get(rosterBar.getSelectedIndex()).starters.size()-1) {
+					Player p = teams.get(rosterBar.getSelectedIndex()).starters.get(select);
+					Player p2 = teams.get(rosterBar.getSelectedIndex()).starters.get(select+1);
+					
+					depthChartList.add(p2.ovrRating() + " " + p2.getName(), select);
+					teams.get(rosterBar.getSelectedIndex()).starters.add(select, p2);
+					
+					depthChartList.add(p.ovrRating() + " " + p.getName(), select+1);
+					teams.get(rosterBar.getSelectedIndex()).starters.add(select+1, p);
+					
+					depthChartList.delItem(select+2);
+					teams.get(rosterBar.getSelectedIndex()).starters.remove(select+2);
+					
+					depthChartList.delItem(select+2);
+					teams.get(rosterBar.getSelectedIndex()).starters.remove(select+2);
+					
+				}
+			}
+		});
+		btnMoveUpRoster.setFont(new Font("Bahnschrift", Font.BOLD, 20));
+		btnMoveUpRoster.setBounds(275, 231, 67, 47);
+		rosterPanel.add(btnMoveUpRoster);
+		
+		JLabel StartersLabel = new JLabel("Depth Chart");
 		StartersLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		StartersLabel.setForeground(Color.WHITE);
 		StartersLabel.setFont(new Font("Bahnschrift", Font.BOLD, 28));
-		StartersLabel.setBounds(260, 38, 215, 47);
+		StartersLabel.setBounds(10, 38, 250, 47);
 		rosterPanel.add(StartersLabel);
 		
-		JLabel ReservesLabel = new JLabel("Reserves");
+		JLabel ReservesLabel = new JLabel("Starters");
 		ReservesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		ReservesLabel.setForeground(Color.WHITE);
 		ReservesLabel.setFont(new Font("Bahnschrift", Font.BOLD, 28));
-		ReservesLabel.setBounds(566, 38, 215, 47);
+		ReservesLabel.setBounds(360, 38, 250, 47);
 		rosterPanel.add(ReservesLabel);
 		
 		JLabel IRLabel = new JLabel("Injured");
 		IRLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		IRLabel.setForeground(Color.WHITE);
 		IRLabel.setFont(new Font("Bahnschrift", Font.BOLD, 28));
-		IRLabel.setBounds(868, 38, 215, 47);
+		IRLabel.setBounds(632, 38, 451, 47);
 		rosterPanel.add(IRLabel);
 		
 		JLabel goaliesLabel = new JLabel("Goalies");
 		goaliesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		goaliesLabel.setForeground(Color.WHITE);
 		goaliesLabel.setFont(new Font("Bahnschrift", Font.BOLD, 28));
-		goaliesLabel.setBounds(566, 315, 215, 47);
+		goaliesLabel.setBounds(632, 333, 244, 47);
 		rosterPanel.add(goaliesLabel);
 		
 		List starterList_1_1_1 = new List();
 		starterList_1_1_1.setForeground(Color.WHITE);
 		starterList_1_1_1.setFont(new Font("Bahnschrift", Font.BOLD, 15));
 		starterList_1_1_1.setBackground(new Color(51, 54, 57));
-		starterList_1_1_1.setBounds(566, 368, 215, 47);
+		starterList_1_1_1.setBounds(632, 391, 179, 47);
 		rosterPanel.add(starterList_1_1_1);
 		
 		JButton btnSwitchGoalies = new JButton("<>");
 		btnSwitchGoalies.setFont(new Font("Bahnschrift", Font.BOLD, 20));
-		btnSwitchGoalies.setBounds(794, 368, 55, 47);
+		btnSwitchGoalies.setBounds(817, 391, 59, 47);
 		rosterPanel.add(btnSwitchGoalies);
 		
 		JButton btnSaveTeam = new JButton("Save Team");
@@ -817,7 +858,7 @@ public class SimWindow extends JFrame {
 			}
 		});
 		btnSaveTeam.setFont(new Font("Bahnschrift", Font.BOLD, 20));
-		btnSaveTeam.setBounds(897, 368, 172, 47);
+		btnSaveTeam.setBounds(911, 391, 172, 47);
 		rosterPanel.add(btnSaveTeam);
 		
 		
@@ -948,7 +989,7 @@ public class SimWindow extends JFrame {
 		});
 		resetSeason.setFont(new Font("Arial", Font.BOLD, 15));
 		resetSeason.setBackground(Color.WHITE);
-		resetSeason.setBounds(599, 791, 179, 35);
+		resetSeason.setBounds(602, 895, 179, 35);
 		contentPane.add(resetSeason);
 		
 		JLabel ovrRank = new JLabel("OVR");
@@ -1024,7 +1065,7 @@ public class SimWindow extends JFrame {
 			}
 		});
 		nextEvent.setFont(new Font("Bahnschrift", Font.PLAIN, 12));
-		nextEvent.setBounds(714, 23, 126, 39);
+		nextEvent.setBounds(714, 23, 126, 40);
 		contentPane.add(nextEvent);
 		nextEvent.setVisible(false);
 		
@@ -1087,6 +1128,8 @@ public class SimWindow extends JFrame {
 	}
 	
 	static void loadTeams() {
+		
+
 		Team oilers = new Team("Edmonton Oilers");
 		oilers.readFile("src/teamLists/oilers.txt");
 		teams.add(oilers);
@@ -1111,14 +1154,25 @@ public class SimWindow extends JFrame {
 		Team flames = new Team("Calgary Flames");
 		flames.readFile("src/teamLists/flames.txt");
 		teams.add(flames);
-		 
-	
+		
+		Team habs = new Team("Montreal Canadiens");
+		habs.readFile("src/teamLists/canadiens.TXT");
+		teams.add(habs);
+		
+		Team jets = new Team("Winnipeg Jets");
+		jets.readFile("src/teamLists/jets.TXT");
+		teams.add(jets);
+		
+		
+		
 	}
 	
 	static String simGame(Team h, Team a) {
 		events.clear();
 		h.health();
 		a.health();
+		h.getStarters();
+		a.getStarters();
 		String s = "";
 		h.str();
 		a.str();
@@ -1128,20 +1182,28 @@ public class SimWindow extends JFrame {
 		a.offStr();
 		h.phyStr();
 		a.phyStr();
+		
 		for(int i = 0; i < h.players.size(); i++) {
-			h.players.get(i).play();
+			h.players.get(i).healing();
 		}
 		for(int i = 0; i < a.players.size(); i++) {
-			a.players.get(i).play();
+			a.players.get(i).healing();
 		}
 		
-		int homeShots = (int)(Math.random() * (1.1 *h.offenseStrength - (a.defenseStrength)*.7) + 5);;
-		int awayShots = (int)(Math.random() * (1.1 *a.offenseStrength - (h.defenseStrength)*.7) + 5);
+		for(int i = 0; i < h.starters.size(); i++) {
+			h.starters.get(i).play();
+		}
+		for(int i = 0; i < a.starters.size(); i++) {
+			a.starters.get(i).play();
+		}
+		
+		int homeShots = (int)(Math.random() * (1.1 *h.offenseStrength - (a.defenseStrength)*.5) + 12);;
+		int awayShots = (int)(Math.random() * (1.1 *a.offenseStrength - (h.defenseStrength)*.5) + 12);
 		
 		
-		int homeHits = (int)(Math.random() * (h.physicalStrength *.4) + 1);
-		int awayHits = (int)(Math.random() * (a.physicalStrength *.4) + 1);
-		int fights = (int)(Math.random() * ((h.physicalStrength+a.physicalStrength)*.08));
+		int homeHits = (int)(Math.random() * (h.physicalStrength *.1) + 1);
+		int awayHits = (int)(Math.random() * (a.physicalStrength *.1) + 1);
+		int fights = (int)(Math.random() * ((h.physicalStrength+a.physicalStrength)*.02));
 		for(int i = 0; i < homeHits; i++) {
 			Player p = randomPlayer(a);
 			Player p2 = whoHitOrFought(h);
@@ -1275,8 +1337,8 @@ public class SimWindow extends JFrame {
 	static Player randomPlayer(Team team) {
 		ArrayList<Player> chance = new ArrayList<Player>();
 		
-		for(int i = 0; i < team.healthyPlayers.size(); i++) {
-			chance.add(team.healthyPlayers.get(i));
+		for(int i = 0; i < team.starters.size(); i++) {
+			chance.add(team.starters.get(i));
 		}
 		
 		int whoScored = (int)(Math.random() * chance.size());
@@ -1293,9 +1355,9 @@ public class SimWindow extends JFrame {
 	static Player whoScored(Team team) {
 		ArrayList<Player> chance = new ArrayList<Player>();
 		
-		for(int i = 0; i < team.healthyPlayers.size(); i++) {
-			for(int j = 0; j < team.healthyPlayers.get(i).offense; j ++) {
-				chance.add(team.healthyPlayers.get(i));
+		for(int i = 0; i < team.starters.size(); i++) {
+			for(int j = 0; j < team.starters.get(i).offense; j ++) {
+				chance.add(team.starters.get(i));
 			}
 		}
 		
@@ -1313,9 +1375,9 @@ public class SimWindow extends JFrame {
 	static Player whoHitOrFought(Team team) {
 		ArrayList<Player> chance = new ArrayList<Player>();
 		
-		for(int i = 0; i < team.healthyPlayers.size(); i++) {
-			for(int j = 0; j < team.healthyPlayers.get(i).physical; j ++) {
-				chance.add(team.healthyPlayers.get(i));
+		for(int i = 0; i < team.starters.size(); i++) {
+			for(int j = 0; j < team.starters.get(i).physical; j ++) {
+				chance.add(team.starters.get(i));
 			}
 		}
 		
@@ -1333,9 +1395,9 @@ public class SimWindow extends JFrame {
 	static Player whoAssisted(Team team) {
 		ArrayList<Player> chance = new ArrayList<Player>();
 		
-		for(int i = 0; i < team.healthyPlayers.size(); i++) {
-			for(int j = 0; j < team.healthyPlayers.get(i).passing; j ++) {
-				chance.add(team.healthyPlayers.get(i));
+		for(int i = 0; i < team.starters.size(); i++) {
+			for(int j = 0; j < team.starters.get(i).passing; j ++) {
+				chance.add(team.starters.get(i));
 			}
 		}
 		
@@ -1845,5 +1907,3 @@ public class SimWindow extends JFrame {
 		
 	}
 }
-
-

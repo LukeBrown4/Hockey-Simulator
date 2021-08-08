@@ -62,31 +62,31 @@ public class Team {
 	
 	void str() {
 		teamStrength = 0;
-		for(int i = 0; i < healthyPlayers.size(); i++) {
-			teamStrength = teamStrength + healthyPlayers.get(i).offense + healthyPlayers.get(i).defense + healthyPlayers.get(i).passing;
+		for(int i = 0; i < players.size(); i++) {
+			teamStrength = teamStrength + players.get(i).offense + players.get(i).defense + players.get(i).passing;
 		}
 		teamStrength = teamStrength + g.offense;
 	}
 	
 	void offStr() {
 		offenseStrength = 0;
-		for(int i = 0; i < healthyPlayers.size(); i++) {
-			offenseStrength = offenseStrength + healthyPlayers.get(i).offense + healthyPlayers.get(i).passing;
+		for(int i = 0; i < players.size(); i++) {
+			offenseStrength = offenseStrength + players.get(i).offense + players.get(i).passing;
 		}
-		offenseStrength = offenseStrength / 2;
+		offenseStrength = offenseStrength/2;
 	}
 	
 	void defStr() {
 		defenseStrength = 0;
-		for(int i = 0; i < healthyPlayers.size(); i++) {
-			defenseStrength = defenseStrength + healthyPlayers.get(i).defense;
+		for(int i = 0; i < players.size(); i++) {
+			defenseStrength = defenseStrength + players.get(i).defense;
 		}
 	}
 	
 	void phyStr() {
 		physicalStrength = 0;
-		for(int i = 0; i < healthyPlayers.size(); i++) {
-			physicalStrength = physicalStrength + healthyPlayers.get(i).physical;
+		for(int i = 0; i < players.size(); i++) {
+			physicalStrength = physicalStrength + players.get(i).physical;
 		}
 	}
 	
@@ -107,12 +107,12 @@ public class Team {
 	
 	void getStarters() {
 		starters.clear();
+		int s=0;
 		for(int i = 0; i < healthyPlayers.size(); i++) {
-			if(i < 18) {
+			if(s < 18) {
 				starters.add(healthyPlayers.get(i));
-			} else {
-				reserves.add(healthyPlayers.get(i));
-			}
+				s++;
+			} 
 		}
 	}
 	
@@ -127,17 +127,17 @@ public class Team {
 		players.clear();
 		for(int i = 0; i < injuredPlayers.size(); i++) {
 			players.add(injuredPlayers.get(i));
-			System.out.println(injuredPlayers.get(i).getName());
+			//System.out.println(injuredPlayers.get(i).getName());
 		}
 		
 		for(int i = 0; i < starters.size(); i++) {
 			players.add(starters.get(i));
-			System.out.println(starters.get(i).getName());
+			//System.out.println(starters.get(i).getName());
 		}
 		
 		for(int i = 0; i < reserves.size(); i++) {
 			players.add(reserves.get(i));
-			System.out.println(reserves.get(i).getName());
+			//System.out.println(reserves.get(i).getName());
 		}
 	}
 
