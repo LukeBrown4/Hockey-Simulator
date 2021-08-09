@@ -762,20 +762,20 @@ public class SimWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int select = depthChartList.getSelectedIndex();
 				if (select > 0) {
-					Player p = teams.get(rosterBar.getSelectedIndex()).starters.get(select);
-					Player p2 = teams.get(rosterBar.getSelectedIndex()).starters.get(select-1);
+					Player p = teams.get(rosterBar.getSelectedIndex()).players.get(select);
+					Player p2 = teams.get(rosterBar.getSelectedIndex()).players.get(select-1);
 					
 					depthChartList.add(p.ovrRating() + " " + p.getName(), select);
-					teams.get(rosterBar.getSelectedIndex()).starters.add(select, p);
+					teams.get(rosterBar.getSelectedIndex()).players.add(select, p);
 					
 					depthChartList.add(p2.ovrRating() + " " + p2.getName(), select+1);
-					teams.get(rosterBar.getSelectedIndex()).starters.add(select+1, p2);
+					teams.get(rosterBar.getSelectedIndex()).players.add(select+1, p2);
 					
 					depthChartList.delItem(select-1);
-					teams.get(rosterBar.getSelectedIndex()).starters.remove(select-1);
+					teams.get(rosterBar.getSelectedIndex()).players.remove(select-1);
 					
 					depthChartList.delItem(select+1);
-					teams.get(rosterBar.getSelectedIndex()).starters.remove(select+1);
+					teams.get(rosterBar.getSelectedIndex()).players.remove(select+1);
 					
 				}
 			}
@@ -788,21 +788,21 @@ public class SimWindow extends JFrame {
 		btnMoveUpRoster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int select = depthChartList.getSelectedIndex();
-				if (select < teams.get(rosterBar.getSelectedIndex()).starters.size()-1) {
-					Player p = teams.get(rosterBar.getSelectedIndex()).starters.get(select);
-					Player p2 = teams.get(rosterBar.getSelectedIndex()).starters.get(select+1);
+				if (select < teams.get(rosterBar.getSelectedIndex()).players.size()-1) {
+					Player p = teams.get(rosterBar.getSelectedIndex()).players.get(select);
+					Player p2 = teams.get(rosterBar.getSelectedIndex()).players.get(select+1);
 					
 					depthChartList.add(p2.ovrRating() + " " + p2.getName(), select);
-					teams.get(rosterBar.getSelectedIndex()).starters.add(select, p2);
+					teams.get(rosterBar.getSelectedIndex()).players.add(select, p2);
 					
 					depthChartList.add(p.ovrRating() + " " + p.getName(), select+1);
-					teams.get(rosterBar.getSelectedIndex()).starters.add(select+1, p);
+					teams.get(rosterBar.getSelectedIndex()).players.add(select+1, p);
 					
 					depthChartList.delItem(select+2);
-					teams.get(rosterBar.getSelectedIndex()).starters.remove(select+2);
+					teams.get(rosterBar.getSelectedIndex()).players.remove(select+2);
 					
 					depthChartList.delItem(select+2);
-					teams.get(rosterBar.getSelectedIndex()).starters.remove(select+2);
+					teams.get(rosterBar.getSelectedIndex()).players.remove(select+2);
 					
 				}
 			}

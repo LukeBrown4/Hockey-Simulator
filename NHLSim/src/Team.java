@@ -118,26 +118,17 @@ public class Team {
 	
 	void saveTeam() {
 		ArrayList<Player> injuredPlayers = new ArrayList<Player>();
-		
-		for (int i = 0; i < players.size(); i++) {
-			if (players.get(i).injuryLength > 0) {
-				injuredPlayers.add(players.get(i));
-			}
-		}
+		ArrayList<Player> playersCopy = (ArrayList<Player>) players.clone();
 		players.clear();
-		for(int i = 0; i < injuredPlayers.size(); i++) {
-			players.add(injuredPlayers.get(i));
-			//System.out.println(injuredPlayers.get(i).getName());
-		}
 		
-		for(int i = 0; i < starters.size(); i++) {
-			players.add(starters.get(i));
-			//System.out.println(starters.get(i).getName());
-		}
-		
-		for(int i = 0; i < reserves.size(); i++) {
-			players.add(reserves.get(i));
-			//System.out.println(reserves.get(i).getName());
+		for (int i = 0; i < playersCopy.size(); i++) {
+			if (playersCopy.get(i).injuryLength > 0) {
+				injuredPlayers.add(playersCopy.get(i));
+				players.add(playersCopy.get(i));
+			} else {
+				players.add(playersCopy.get(i));
+				starters.add(playersCopy.get(i));
+			}
 		}
 	}
 
